@@ -7,8 +7,4 @@ abstract interface class ISpecialistsRepository {
   Future<Either<Failure, List<SpecialistsEntity>>> getAllSpecialists(
     int page,
   );
-
-  Future<Either<Failure, List<SpecialistsEntity>>> searchSpecialists(
-    String query,
-  );
 }

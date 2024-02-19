@@ -26,7 +26,7 @@ class SpecialistsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    setupScrollController(context);
+    // setupScrollController(context);
     return BlocBuilder<SpecialistsListCubit, SpecialistsState>(
       builder: (context, state) {
         List<SpecialistsEntity> specialists = [];
@@ -52,7 +52,7 @@ class SpecialistsListWidget extends StatelessWidget {
         final length = specialists[page].results?.length ?? 0;
 
         return ListView.separated(
-          controller: scrollController,
+          // controller: scrollController,
           itemCount: length,
           itemBuilder: (context, index) {
             debugPrint(
@@ -62,17 +62,18 @@ class SpecialistsListWidget extends StatelessWidget {
                 specialist: specialists[page],
                 index: index,
               );
-            } else {
-              Timer(
-                const Duration(milliseconds: 30),
-                () {
-                  scrollController.jumpTo(
-                    scrollController.position.maxScrollExtent,
-                  );
-                },
-              );
-              return _loadingIndicator();
             }
+            // else {
+            //   Timer(
+            //     const Duration(milliseconds: 30),
+            //     () {
+            //       scrollController.jumpTo(
+            //         scrollController.position.maxScrollExtent,
+            //       );
+            //     },
+            //   );
+            //   return _loadingIndicator();
+            // }
           },
           separatorBuilder: (context, index) {
             return Divider(

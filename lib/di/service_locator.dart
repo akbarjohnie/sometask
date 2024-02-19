@@ -8,8 +8,6 @@ import 'package:first_task/feature/data/datasources/local_data_source.dart';
 import 'package:first_task/feature/data/datasources/remote_data_source.dart';
 import 'package:first_task/feature/data/repositories/specialists_repository.dart';
 import 'package:first_task/feature/domain/usecases/get_all_specialists.dart';
-import 'package:first_task/feature/domain/usecases/search_specialist.dart';
-import 'package:first_task/feature/presentation/bloc/bloc/search_bloc.dart';
 import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_list_cubit.dart';
 
 final sl = GetIt.instance;
@@ -19,13 +17,9 @@ Future<void> init() async {
   sl.registerFactory(
     () => SpecialistsListCubit(getAllSpecialists: sl<GetAllSpecialists>()),
   );
-  sl.registerFactory(
-    () => SpecialistsSearchBloc(searchSpecialists: sl()),
-  );
 
   // UseCases
   sl.registerLazySingleton(() => GetAllSpecialists(sl()));
-  sl.registerLazySingleton(() => SearchSpecialists(sl()));
 
   // Repository
   sl.registerFactory(

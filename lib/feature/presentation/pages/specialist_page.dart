@@ -1,4 +1,3 @@
-import 'package:first_task/feature/presentation/widgets/search_delegate.dart';
 import 'package:first_task/feature/presentation/widgets/specialists_list_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              showSearch(context: context, delegate: CustomSearchDelegate());
+              // TODO
             },
             icon: const Icon(Icons.search),
             color: Colors.white,

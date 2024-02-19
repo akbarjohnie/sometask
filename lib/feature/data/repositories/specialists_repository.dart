@@ -30,15 +30,6 @@ class SpecialistsRepositoryImpl implements ISpecialistsRepository {
     );
   }
 
-  @override
-  Future<Either<Failure, List<SpecialistsEntity>>> searchSpecialists(
-    String query,
-  ) async {
-    return await _getSpecialists(
-      () => remoteDataSource.searchSpecialists(query),
-    );
-  }
-
   Future<Either<Failure, List<SpecialistsEntity>>> _getSpecialists(
     Future<List<SpecialistsModel>> Function() getSpecialists,
   ) async {

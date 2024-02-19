@@ -15,7 +15,7 @@ abstract interface class SpecialistsRemoteDataSource {
   /// Calls the '' endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<List<SpecialistsModel>> searchSpecialists(String query);
+  // Future<List<SpecialistsModel>> searchSpecialists(String query);
 }
 
 class SpecialistsRemoteDataSourceImpl implements SpecialistsRemoteDataSource {
@@ -29,13 +29,6 @@ class SpecialistsRemoteDataSourceImpl implements SpecialistsRemoteDataSource {
   Future<List<SpecialistsModel>> getAllSpecialists(int page) {
     final url =
         '$_baseUrl/client/v1/specialists?page=$page&limit=10&sort=-created_at';
-    return _getSpecialistsFromUrl(url);
-  }
-
-  @override // TODO
-  Future<List<SpecialistsModel>> searchSpecialists(String query) {
-    final url = 'https://rickandmortyapi.com/api/character/?name=$query';
-    // '/client/v1/specialists/$id'
     return _getSpecialistsFromUrl(url);
   }
 
