@@ -27,8 +27,9 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
-          backgroundColor: AppColors.mainBackground,
-          scaffoldBackgroundColor: AppColors.mainBackground,
+          colorScheme: const ColorScheme.dark().copyWith(
+            background: AppColors.mainBackground,
+          ),
         ),
         home: const HomePage(),
       ),
