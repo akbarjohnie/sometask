@@ -12,18 +12,6 @@ class SpecialistsCacheImage extends StatelessWidget {
     this.height,
   }) : super(key: key);
 
-  Widget _imageWidget(ImageProvider imageProvider) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: imageProvider,
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -43,6 +31,18 @@ class SpecialistsCacheImage extends StatelessWidget {
           const AssetImage('assets/images/noimage.jpg'),
         );
       },
+    );
+  }
+
+  Widget _imageWidget(ImageProvider imageProvider) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: imageProvider,
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
     );
   }
 }

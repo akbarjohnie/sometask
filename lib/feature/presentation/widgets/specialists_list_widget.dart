@@ -13,15 +13,13 @@ class SpecialistsListWidget extends StatelessWidget {
   SpecialistsListWidget({Key? key}) : super(key: key);
 
   void setupScrollController(BuildContext context) {
-    scrollController.addListener(
-      () {
-        if (scrollController.position.pixels ==
-                scrollController.position.maxScrollExtent &&
-            scrollController.position.atEdge) {
-          context.read<SpecialistsListCubit>().loadSpecialists();
-        }
-      },
-    );
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+              scrollController.position.maxScrollExtent &&
+          scrollController.position.atEdge) {
+        context.read<SpecialistsListCubit>().loadSpecialists();
+      }
+    });
   }
 
   @override
@@ -62,18 +60,18 @@ class SpecialistsListWidget extends StatelessWidget {
                 specialist: specialists[page],
                 index: index,
               );
+            } else {
+              Timer(
+                const Duration(milliseconds: 30),
+                () {
+                  // scrollController.jumpTo(
+                  //   scrollController.position.maxScrollExtent,
+                  // );
+                },
+              );
+
+              return _loadingIndicator();
             }
-            // else {
-            //   Timer(
-            //     const Duration(milliseconds: 30),
-            //     () {
-            //       scrollController.jumpTo(
-            //         scrollController.position.maxScrollExtent,
-            //       );
-            //     },
-            //   );
-            //   return _loadingIndicator();
-            // }
           },
           separatorBuilder: (context, index) {
             return Divider(

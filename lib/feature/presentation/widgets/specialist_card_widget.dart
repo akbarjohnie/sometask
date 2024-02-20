@@ -1,7 +1,7 @@
 import 'package:first_task/feature/presentation/pages/specialist_detail.dart';
 import 'package:flutter/material.dart';
 
-import 'package:first_task/const/app_colors.dart';
+import 'package:first_task/common/app_colors.dart';
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 import 'package:first_task/feature/presentation/widgets/cache_image.dart';
 

@@ -7,7 +7,7 @@ import 'package:first_task/feature/data/datasources/local_data_source.dart';
 import 'package:first_task/feature/data/datasources/remote_data_source.dart';
 import 'package:first_task/feature/data/models/specialists_model.dart';
 import 'package:first_task/feature/data/repositories/mapper/entity_mapper.dart';
-import 'package:first_task/feature/data/repositories/specialists_repository_interface.dart';
+import 'package:first_task/feature/domain/repositiries/specialists_repository_interface.dart';
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 
 class SpecialistsRepositoryImpl implements ISpecialistsRepository {

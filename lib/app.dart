@@ -5,7 +5,7 @@ import 'package:first_task/feature/presentation/bloc/bloc/search_bloc.dart';
 import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_list_cubit.dart';
 import 'package:first_task/feature/presentation/pages/specialist_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:first_task/const/app_colors.dart';
+import 'package:first_task/common/app_colors.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:first_task/const/app_colors.dart';
+import 'package:first_task/common/app_colors.dart';
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 import 'package:first_task/feature/presentation/widgets/cache_image.dart';
 import 'package:flutter/material.dart';
@@ -35,23 +35,17 @@ class SpecialistsDetailPage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 12,
                   height: 12,
-                  // decoration: BoxDecoration(
-                  //   color: specialist. == "Alive"
-                  //       ? Colors.green
-                  //       : Colors.red,
-                  //   borderRadius: BorderRadius.circular(8.0),
-                  // ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 8,
                 ),
-                const Text(
+                Text(
                   'Данные',
                   style: TextStyle(
                     color: Colors.white,
