@@ -28,7 +28,7 @@ class SpecialistsCacheImage extends StatelessWidget {
       },
       errorWidget: (context, url, error) {
         return _imageWidget(
-          const AssetImage('assets/images/noimage.jpg'),
+          const AssetImage('assets/image/empty_photo.png'),
         );
       },
     );

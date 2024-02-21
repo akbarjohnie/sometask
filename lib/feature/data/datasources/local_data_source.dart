@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:first_task/core/error/exceptions.dart';
-import 'package:first_task/feature/data/models/specialists_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:first_task/feature/data/models/specialists_model/specialists_model.dart';
 
 abstract interface class SpecialistsLocalDataSource {
   /// Gets the cached [List<SpecialistsModel>] which was gotten the last time

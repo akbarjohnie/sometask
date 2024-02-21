@@ -10,15 +10,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Specialists'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              // TODO
-            },
-            icon: const Icon(Icons.search),
-            color: Colors.white,
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       // TODO
+        //     },
+        //     icon: const Icon(Icons.search),
+        //     color: Colors.white,
+        //   ),
+        // ],
       ),
       body: SpecialistsListWidget(),
     );

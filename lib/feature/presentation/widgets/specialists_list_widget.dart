@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:first_task/feature/data/repositories/mapper/results_entity_mapper.dart';
 import 'package:first_task/feature/presentation/widgets/specialist_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ class SpecialistsListWidget extends StatelessWidget {
 
   void setupScrollController(BuildContext context) {
     scrollController.addListener(() {
+      debugPrint(scrollController.position.pixels.toString());
       if (scrollController.position.pixels ==
               scrollController.position.maxScrollExtent &&
           scrollController.position.atEdge) {
@@ -24,7 +26,7 @@ class SpecialistsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // setupScrollController(context);
+    setupScrollController(context);
     return BlocBuilder<SpecialistsListCubit, SpecialistsState>(
       builder: (context, state) {
         List<SpecialistsEntity> specialists = [];
@@ -46,32 +48,35 @@ class SpecialistsListWidget extends StatelessWidget {
             ),
           );
         }
-        var page = context.read<SpecialistsListCubit>().page - 2;
-        final length = specialists[page].results?.length ?? 0;
+
+        var page = 0;
+        final length = specialists[page].total;
 
         return ListView.separated(
-          // controller: scrollController,
+          controller: scrollController,
           itemCount: length,
           itemBuilder: (context, index) {
-            debugPrint(
-                'length ${specialists[page].results?.length} index $index');
-            if (index < specialists[page].results!.length - 1) {
-              return SpecialistsCardWidget(
-                specialist: specialists[page],
-                index: index,
-              );
-            } else {
-              Timer(
-                const Duration(milliseconds: 30),
-                () {
-                  // scrollController.jumpTo(
-                  //   scrollController.position.maxScrollExtent,
-                  // );
-                },
-              );
+            var info = specialists[page].results;
 
-              return _loadingIndicator();
+            if (info != null) {
+              if (info[index] != null && index < length - 1) {
+                debugPrint('indexCard $index');
+                return SpecialistsCardWidget(
+                  specialist: resultsToEntity(info[index]!),
+                );
+              }
             }
+
+            debugPrint('last element is on index $index');
+            debugPrint(info?[3].toString());
+            Timer(const Duration(milliseconds: 300), () {
+              scrollController.animateTo(
+                scrollController.position.maxScrollExtent,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+              );
+            });
+            return _loadingIndicator();
           },
           separatorBuilder: (context, index) {
             return Divider(

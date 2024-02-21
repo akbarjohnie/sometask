@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:first_task/core/error/exceptions.dart';
-import 'package:first_task/feature/data/models/specialists_model.dart';
+import 'package:first_task/feature/data/models/specialists_model/specialists_model.dart';
 
 abstract interface class SpecialistsRemoteDataSource {
   /// Calls the /client/v1/specialists?page=$page&limit=$limit&sort=-created_at endpoint.
