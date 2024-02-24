@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -41,7 +44,6 @@ class SpecialistsRemoteDataSourceImpl implements SpecialistsRemoteDataSource {
     if (response.statusCode == 200) {
       final Map<String, dynamic> result =
           jsonDecode(utf8.decode(response.bodyBytes));
-      debugPrint(result.toString());
       List<SpecialistsModel> list = [SpecialistsModel.fromJson(result)];
       return list;
     } else {

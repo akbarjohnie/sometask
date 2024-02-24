@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:first_task/common/app_colors.dart';
 import 'package:first_task/feature/domain/entities/results_enity.dart';
 import 'package:first_task/feature/presentation/widgets/cache_image.dart';
-import 'package:flutter/material.dart';
 
 class SpecialistsDetailPage extends StatelessWidget {
   final ResultsEntity specialist;
@@ -50,20 +51,24 @@ class SpecialistsDetailPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (specialist != null) ...buildText('ID:', '${specialist.id}'),
+                ...buildText('ID:', '${specialist.id}'),
                 ...buildText('Фамилия:', '${specialist.last_name}'),
                 ...buildText('Имя', '${specialist.first_name}'),
                 ...buildText('Отчество:', '${specialist.middle_name}'),
-                ...buildText(
-                    'Образование:', '${specialist.educations?[0]?.name}'),
-                ...buildText('Направление:',
-                    '${specialist.educations?[0]?.description}'),
-                ...buildText(
-                  'Годы обучения:',
-                  'С ${specialist.educations?[0]?.from} по ${specialist.educations?[0]?.to}',
-                ),
-                ...buildText('Последнее место работы:',
-                    '${specialist.work_experiences?[0]?.name}'),
+                if (specialist.work_experiences!.isNotEmpty)
+                  ...buildText('Последнее место работы:',
+                      '${specialist.work_experiences?[0]?.name}'),
+                if (specialist.educations!.isNotEmpty) // TODO
+                  ...buildText(
+                      'Образование:', '${specialist.educations?[0]?.name}'),
+                if (specialist.educations!.isNotEmpty)
+                  ...buildText('Направление:',
+                      '${specialist.educations?[0]?.description}'),
+                if (specialist.educations!.isNotEmpty)
+                  ...buildText(
+                    'Годы обучения:',
+                    'С ${specialist.educations?[0]?.from} по ${specialist.educations?[0]?.to}',
+                  ),
               ],
             )
           ],

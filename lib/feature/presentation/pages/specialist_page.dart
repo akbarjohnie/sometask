@@ -1,5 +1,6 @@
-import 'package:first_task/feature/presentation/widgets/specialists_list_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'package:first_task/feature/presentation/widgets/specialists_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
