@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:first_task/core/error/exceptions.dart';
 import 'package:first_task/feature/data/models/specialists_model/specialists_model.dart';
 
-abstract interface class SpecialistsLocalDataSource {
+abstract interface class ISpecialistsLocalDataSource {
   /// Gets the cached [List<SpecialistsModel>] which was gotten the last time
   /// the user had an internet connection.
   ///
@@ -18,7 +18,7 @@ abstract interface class SpecialistsLocalDataSource {
 // ignore: constant_identifier_names
 const CACHED_SPECIALISTS_LIST = 'CACHED_SPECIALISTS_LIST';
 
-class SpecialistsLocalDataSourceImpl implements SpecialistsLocalDataSource {
+class SpecialistsLocalDataSourceImpl implements ISpecialistsLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   SpecialistsLocalDataSourceImpl({required this.sharedPreferences});

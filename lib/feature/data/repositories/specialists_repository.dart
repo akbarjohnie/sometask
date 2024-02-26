@@ -11,9 +11,9 @@ import 'package:first_task/feature/domain/repositiries/specialists_repository_in
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 
 class SpecialistsRepositoryImpl implements ISpecialistsRepository {
-  final SpecialistsRemoteDataSource remoteDataSource;
-  final SpecialistsLocalDataSource localDataSource;
-  final NetworkInfo networkInfo;
+  final ISpecialistsRemoteDataSource remoteDataSource;
+  final ISpecialistsLocalDataSource localDataSource;
+  final INetworkInfo networkInfo;
 
   SpecialistsRepositoryImpl({
     required this.remoteDataSource,

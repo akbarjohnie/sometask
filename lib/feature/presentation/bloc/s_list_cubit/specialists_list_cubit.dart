@@ -1,3 +1,5 @@
+import 'package:first_task/feature/data/repositories/mapper/results_entity_mapper.dart';
+import 'package:first_task/feature/domain/entities/results_enity.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,32 +24,41 @@ class SpecialistsListCubit extends Cubit<SpecialistsState> {
     if (state is SpecialistsLoading) return;
 
     final currentState = state;
+    var oldResults = <ResultsEntity>[];
 
-    var oldSpecialists = <SpecialistsEntity>[];
-    if (currentState is SpecialistsLoaded) {
-      oldSpecialists = currentState.specialistsList;
+    if (currentState is GetSpecLoading) {
+      oldResults = _getResults(currentState.getSpecList, page);
     }
 
-    emit(SpecialistsLoading(oldSpecialists, isFirstFetch: page == 1));
+    emit(SpecialistsLoading(oldResults, isFirstFetch: page == 1));
 
     final failureOrSpecialists = await getAllSpecialists(
       PageSpecialistsParams(page: page),
     );
 
     failureOrSpecialists.fold(
-        (error) => emit(
-              SpecialistsError(
-                message: _mapFailureToMessage(error),
-              ),
-            ), (specialist) {
-      page++;
-      final specialists = (state as SpecialistsLoading).oldSpecialistsList;
+      (error) => emit(
+        SpecialistsError(
+          message: _mapFailureToMessage(error),
+        ),
+      ),
+      (specialist) {
+        debugPrint('Page $page');
+        final resEntityList = (state as SpecialistsLoading).oldResultsList;
 
-      specialists.addAll(specialist);
-
-      debugPrint('List length: ${specialists.length.toString()}');
-      emit(SpecialistsLoaded(specialists));
-    });
+        if (specialist.first.results!.isNotEmpty) {
+          resEntityList.addAll(_getResults(specialist, page));
+          debugPrint('List length: ${resEntityList.length.toString()}');
+          emit(SpecialistsLoaded(resEntityList));
+          if (resEntityList != <ResultsEntity>[]) {
+            page++;
+          }
+        }
+        // else {
+        emit(SpecialistsLoading(oldResults));
+        // }
+      },
+    );
   }
 
   String _mapFailureToMessage(Failure failure) {
@@ -59,5 +70,19 @@ class SpecialistsListCubit extends Cubit<SpecialistsState> {
       default:
         return 'Unexpected Error';
     }
+  }
+
+  List<ResultsEntity> _getResults(
+    List<SpecialistsEntity> specList,
+    int page,
+  ) {
+    List<ResultsEntity> data = [];
+    if (specList[page - 1].results != []) {
+      for (var element in specList[page - 1].results!) {
+        data.add(resultsToEntity(element!));
+      }
+    }
+
+    return data;
   }
 }

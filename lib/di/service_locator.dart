@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,8 +23,27 @@ Future<void> init() async {
   // UseCases
   sl.registerLazySingleton(() => GetAllSpecialists(sl()));
 
+  // Dio
+  sl.registerLazySingleton(
+    () => Dio()
+      ..interceptors.add(
+        PrettyDioLogger(),
+      ),
+  );
+
+  // DataSources
+  sl.registerLazySingleton<ISpecialistsRemoteDataSource>(
+    () => SpecialistsRemoteDataSourceImpl(
+      dio: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<ISpecialistsLocalDataSource>(
+    () => SpecialistsLocalDataSourceImpl(sharedPreferences: sl()),
+  );
+
   // Repository
-  sl.registerFactory(
+  sl.registerLazySingleton(
     () => SpecialistsRepositoryImpl(
       remoteDataSource: sl(),
       localDataSource: sl(),
@@ -30,18 +51,8 @@ Future<void> init() async {
     ),
   );
 
-  sl.registerLazySingleton<SpecialistsRemoteDataSource>(
-    () => SpecialistsRemoteDataSourceImpl(
-      client: sl(),
-    ),
-  );
-
-  sl.registerLazySingleton<SpecialistsLocalDataSource>(
-    () => SpecialistsLocalDataSourceImpl(sharedPreferences: sl()),
-  );
-
   // Core
-  sl.registerLazySingleton<NetworkInfo>(
+  sl.registerLazySingleton<INetworkInfo>(
     () => NetworkInfoImpl(sl()),
   );
 

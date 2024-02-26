@@ -34,7 +34,7 @@ class SpecialistsCardWidget extends StatelessWidget {
         child: Row(
           children: [
             SpecialistsCacheImage(
-              imageUrl: specialist.image_url ?? '', // TODO
+              imageUrl: specialist.imageUrl ?? '', // TODO
               width: 166,
               height: 166,
             ),
@@ -45,7 +45,7 @@ class SpecialistsCardWidget extends StatelessWidget {
                 children: [
                   const SizedBox(height: 12),
                   Text(
-                    '${(specialist.first_name)} ${specialist.last_name}', // TODO
+                    '${(specialist.firstName)} ${specialist.lastName}', // TODO
                     style: const TextStyle(
                       fontSize: 20,
                       color: Colors.white,

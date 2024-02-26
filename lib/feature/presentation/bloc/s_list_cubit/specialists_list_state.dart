@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:first_task/feature/domain/entities/results_enity.dart';
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 
 abstract class SpecialistsState extends Equatable {
@@ -13,21 +14,34 @@ class SpecialistsEmpty extends SpecialistsState {
   List<Object?> get props => [];
 }
 
-class SpecialistsLoading extends SpecialistsState {
-  final List<SpecialistsEntity> oldSpecialistsList;
+class GetSpecLoading extends SpecialistsState {
+  final List<SpecialistsEntity> getSpecList;
   final bool isFirstFetch;
 
-  const SpecialistsLoading(
-    this.oldSpecialistsList, {
+  const GetSpecLoading(
+    this.getSpecList, {
     this.isFirstFetch = false,
   });
 
   @override
-  List<Object?> get props => [oldSpecialistsList];
+  List<Object?> get props => [getSpecList];
+}
+
+class SpecialistsLoading extends SpecialistsState {
+  final List<ResultsEntity> oldResultsList;
+  final bool isFirstFetch;
+
+  const SpecialistsLoading(
+    this.oldResultsList, {
+    this.isFirstFetch = false,
+  });
+
+  @override
+  List<Object?> get props => [oldResultsList];
 }
 
 class SpecialistsLoaded extends SpecialistsState {
-  final List<SpecialistsEntity> specialistsList;
+  final List<ResultsEntity> specialistsList;
 
   const SpecialistsLoaded(this.specialistsList);
 

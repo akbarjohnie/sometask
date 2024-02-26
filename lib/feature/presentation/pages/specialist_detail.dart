@@ -26,7 +26,7 @@ class SpecialistsDetailPage extends StatelessWidget {
             SpecialistsCacheImage(
               width: 260,
               height: 260,
-              imageUrl: specialist.image_url ?? '', // TODO
+              imageUrl: specialist.imageUrl ?? '', // TODO
             ),
             const SizedBox(height: 16),
             const Row(
@@ -52,22 +52,31 @@ class SpecialistsDetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...buildText('ID:', '${specialist.id}'),
-                ...buildText('Фамилия:', '${specialist.last_name}'),
-                ...buildText('Имя', '${specialist.first_name}'),
-                ...buildText('Отчество:', '${specialist.middle_name}'),
-                if (specialist.work_experiences!.isNotEmpty)
-                  ...buildText('Последнее место работы:',
-                      '${specialist.work_experiences?[0]?.name}'),
+                ...buildText('Фамилия:', '${specialist.lastName}'),
+                ...buildText('Имя:', '${specialist.firstName}'),
+                ...buildText('Отчество:', '${specialist.middleName}'),
+                if (specialist.workExp!.isNotEmpty)
+                  ...buildText(
+                    'Последнее место работы:',
+                    '${specialist.workExp?.first?.name}',
+                  ),
                 if (specialist.educations!.isNotEmpty) // TODO
-                  ...buildText(
-                      'Образование:', '${specialist.educations?[0]?.name}'),
-                if (specialist.educations!.isNotEmpty)
-                  ...buildText('Направление:',
-                      '${specialist.educations?[0]?.description}'),
-                if (specialist.educations!.isNotEmpty)
-                  ...buildText(
-                    'Годы обучения:',
-                    'С ${specialist.educations?[0]?.from} по ${specialist.educations?[0]?.to}',
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ...buildText(
+                        'Образование:',
+                        '${specialist.educations?.first?.name}',
+                      ),
+                      ...buildText(
+                        'Направление:',
+                        '${specialist.educations?.first?.description}',
+                      ),
+                      ...buildText(
+                        'Годы обучения:',
+                        'С ${specialist.educations?.first?.from} по ${specialist.educations?.first?.to}',
+                      ),
+                    ],
                   ),
               ],
             )

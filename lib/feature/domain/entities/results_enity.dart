@@ -5,34 +5,34 @@ import 'package:first_task/feature/data/models/work_exp_model/work_exp_model.dar
 
 class ResultsEntity extends Equatable {
   final List<EducationModel?>? educations;
-  final String? first_name;
+  final String? firstName;
   final String? id;
-  final String? image_url;
-  final String? last_name;
-  final String? middle_name;
+  final String? imageUrl;
+  final String? lastName;
+  final String? middleName;
   final List<Specializations?>? specializations;
-  final List<WorkExperiancesModel?>? work_experiences;
+  final List<WorkExperiancesModel?>? workExp;
 
   const ResultsEntity({
     required this.educations,
-    required this.first_name,
+    required this.firstName,
     required this.id,
-    required this.image_url,
-    required this.last_name,
-    required this.middle_name,
+    required this.imageUrl,
+    required this.lastName,
+    required this.middleName,
     required this.specializations,
-    required this.work_experiences,
+    required this.workExp,
   });
 
   @override
   List<Object?> get props => [
         educations,
-        first_name,
+        firstName,
         id,
-        image_url,
-        last_name,
-        middle_name,
+        imageUrl,
+        lastName,
+        middleName,
         specializations,
-        work_experiences,
+        workExp,
       ];
 }
