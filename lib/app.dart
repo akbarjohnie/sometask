@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:first_task/di/service_locator.dart';
-import 'package:first_task/feature/presentation/bloc/bloc/search_bloc.dart';
 import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_list_cubit.dart';
-import 'package:first_task/feature/presentation/pages/specialist_page.dart';
+import 'package:first_task/feature/presentation/pages/specialists_page/specialists_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:first_task/common/app_colors.dart';
 
@@ -20,9 +19,8 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<SpecialistsListCubit>(
-            create: (context) => sl<SpecialistsListCubit>()..loadSpecialists()),
-        BlocProvider<SpecialistsSearchBloc>(
-            create: (context) => sl<SpecialistsSearchBloc>()),
+          create: (context) => sl<SpecialistsListCubit>()..loadSpecialists(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -31,7 +29,7 @@ class _MyAppState extends State<MyApp> {
             background: AppColors.mainBackground,
           ),
         ),
-        home: const HomePage(),
+        home: const SpecialistsPage(),
       ),
     );
   }

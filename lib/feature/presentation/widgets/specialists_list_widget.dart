@@ -1,5 +1,5 @@
 import 'package:first_task/feature/domain/entities/results_enity.dart';
-import 'package:first_task/feature/presentation/view_model/scroll_controller.dart';
+import 'package:first_task/feature/presentation/pages/vm/specialists_page_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,24 +8,22 @@ import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_li
 import 'package:first_task/feature/presentation/widgets/specialist_card_widget.dart';
 
 class SpecialistsListWidget extends StatelessWidget {
-  final scrollController = ScrollController();
-
-  SpecialistsListWidget({Key? key}) : super(key: key);
+  const SpecialistsListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    setupScrollController(context, scrollController);
+    final presenter = context.read<SpecialistsPresenterImpl>();
     return BlocBuilder<SpecialistsListCubit, SpecialistsState>(
       builder: (context, state) {
         List<ResultsEntity> resData = [];
-        bool isLoading = false;
+        // bool isLoading = false;
 
         switch (state) {
           case SpecialistsLoading(isFirstFetch: true):
             return _loadingIndicator();
           case SpecialistsLoading(isFirstFetch: false):
             resData += state.oldResultsList;
-            isLoading = true;
+          // isLoading = true;
           case SpecialistsLoaded():
             resData += state.specialistsList;
           case SpecialistsEmpty():
@@ -45,7 +43,7 @@ class SpecialistsListWidget extends StatelessWidget {
         // TODO
         if (resData.isNotEmpty) {
           return ListView.separated(
-            controller: scrollController,
+            controller: presenter.scrollController,
             itemCount: length,
             itemBuilder: (_, index) {
               debugPrint('IndexCard $index');
@@ -56,7 +54,7 @@ class SpecialistsListWidget extends StatelessWidget {
             separatorBuilder: (_, __) => Divider(color: Colors.grey[400]),
           );
         }
-        debugPrint('resData $resData');
+        debugPrint('Something went wrog...');
         return _loadingIndicator();
       },
     );

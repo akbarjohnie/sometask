@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:first_task/common/app_colors.dart';
 import 'package:first_task/feature/presentation/widgets/cache_image.dart';
 import 'package:first_task/feature/domain/entities/results_enity.dart';
-import 'package:first_task/feature/presentation/pages/specialist_detail.dart';
+import 'package:first_task/feature/presentation/pages/specialist_detail_page/specialist_detail_page.dart';
 
 class SpecialistsCardWidget extends StatelessWidget {
   final ResultsEntity specialist;

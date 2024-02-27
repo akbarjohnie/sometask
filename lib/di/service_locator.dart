@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:first_task/core/platform/network_info.dart';
 import 'package:first_task/feature/data/datasources/local_data_source.dart';
@@ -22,14 +21,6 @@ Future<void> init() async {
 
   // UseCases
   sl.registerLazySingleton(() => GetAllSpecialists(sl()));
-
-  // Dio
-  sl.registerLazySingleton(
-    () => Dio()
-      ..interceptors.add(
-        PrettyDioLogger(),
-      ),
-  );
 
   // DataSources
   sl.registerLazySingleton<ISpecialistsRemoteDataSource>(
@@ -59,6 +50,6 @@ Future<void> init() async {
   // External
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
-  sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => InternetConnectionChecker());
+  sl.registerLazySingleton(() => Dio()..interceptors.add(PrettyDioLogger()));
 }
