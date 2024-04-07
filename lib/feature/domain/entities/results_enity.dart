@@ -1,25 +1,25 @@
 import 'package:equatable/equatable.dart';
-import 'package:first_task/feature/data/models/education_model/education_model.dart';
+
+import 'package:first_task/feature/data/models/description_model/description_model.dart';
 import 'package:first_task/feature/data/models/specialization_model/specialization_model.dart';
-import 'package:first_task/feature/data/models/work_exp_model/work_exp_model.dart';
 
 class ResultsEntity extends Equatable {
-  final List<EducationModel?>? educations;
-  final String? firstName;
   final String? id;
   final String? imageUrl;
+  final String? firstName;
   final String? lastName;
   final String? middleName;
+  final List<DescriptionModel?>? educations;
   final List<Specializations?>? specializations;
-  final List<WorkExperiancesModel?>? workExp;
+  final List<DescriptionModel?>? workExp;
 
   const ResultsEntity({
-    required this.educations,
-    required this.firstName,
     required this.id,
     required this.imageUrl,
+    required this.firstName,
     required this.lastName,
     required this.middleName,
+    required this.educations,
     required this.specializations,
     required this.workExp,
   });

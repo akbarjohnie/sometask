@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'package:first_task/feature/data/models/results_model/results_model.dart';
 
 class SpecialistsEntity extends Equatable {

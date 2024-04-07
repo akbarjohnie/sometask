@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'education_model.dart';
+part of 'description_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,42 +14,42 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-EducationModel _$EducationModelFromJson(Map<String, dynamic> json) {
+DescriptionModel _$DescriptionModelFromJson(Map<String, dynamic> json) {
   return _EducationModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EducationModel {
-  String? get description => throw _privateConstructorUsedError;
-  String? get from => throw _privateConstructorUsedError;
+mixin _$DescriptionModel {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get from => throw _privateConstructorUsedError;
   String? get to => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EducationModelCopyWith<EducationModel> get copyWith =>
+  $DescriptionModelCopyWith<DescriptionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EducationModelCopyWith<$Res> {
-  factory $EducationModelCopyWith(
-          EducationModel value, $Res Function(EducationModel) then) =
-      _$EducationModelCopyWithImpl<$Res, EducationModel>;
+abstract class $DescriptionModelCopyWith<$Res> {
+  factory $DescriptionModelCopyWith(
+          DescriptionModel value, $Res Function(DescriptionModel) then) =
+      _$DescriptionModelCopyWithImpl<$Res, DescriptionModel>;
   @useResult
   $Res call(
-      {String? description,
-      String? from,
-      String? id,
+      {String? id,
       String? name,
+      String? description,
+      String? from,
       String? to});
 }
 
 /// @nodoc
-class _$EducationModelCopyWithImpl<$Res, $Val extends EducationModel>
-    implements $EducationModelCopyWith<$Res> {
-  _$EducationModelCopyWithImpl(this._value, this._then);
+class _$DescriptionModelCopyWithImpl<$Res, $Val extends DescriptionModel>
+    implements $DescriptionModelCopyWith<$Res> {
+  _$DescriptionModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -59,21 +59,13 @@ class _$EducationModelCopyWithImpl<$Res, $Val extends EducationModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? description = freezed,
-    Object? from = freezed,
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
+    Object? from = freezed,
     Object? to = freezed,
   }) {
     return _then(_value.copyWith(
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -81,6 +73,14 @@ class _$EducationModelCopyWithImpl<$Res, $Val extends EducationModel>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      from: freezed == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
               as String?,
       to: freezed == to
           ? _value.to
@@ -92,23 +92,23 @@ class _$EducationModelCopyWithImpl<$Res, $Val extends EducationModel>
 
 /// @nodoc
 abstract class _$$EducationModelImplCopyWith<$Res>
-    implements $EducationModelCopyWith<$Res> {
+    implements $DescriptionModelCopyWith<$Res> {
   factory _$$EducationModelImplCopyWith(_$EducationModelImpl value,
           $Res Function(_$EducationModelImpl) then) =
       __$$EducationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? description,
-      String? from,
-      String? id,
+      {String? id,
       String? name,
+      String? description,
+      String? from,
       String? to});
 }
 
 /// @nodoc
 class __$$EducationModelImplCopyWithImpl<$Res>
-    extends _$EducationModelCopyWithImpl<$Res, _$EducationModelImpl>
+    extends _$DescriptionModelCopyWithImpl<$Res, _$EducationModelImpl>
     implements _$$EducationModelImplCopyWith<$Res> {
   __$$EducationModelImplCopyWithImpl(
       _$EducationModelImpl _value, $Res Function(_$EducationModelImpl) _then)
@@ -117,21 +117,13 @@ class __$$EducationModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? description = freezed,
-    Object? from = freezed,
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
+    Object? from = freezed,
     Object? to = freezed,
   }) {
     return _then(_$EducationModelImpl(
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      from: freezed == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -139,6 +131,14 @@ class __$$EducationModelImplCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      from: freezed == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
               as String?,
       to: freezed == to
           ? _value.to
@@ -152,25 +152,25 @@ class __$$EducationModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EducationModelImpl implements _EducationModel {
   const _$EducationModelImpl(
-      {this.description, this.from, this.id, this.name, this.to});
+      {this.id, this.name, this.description, this.from, this.to});
 
   factory _$EducationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EducationModelImplFromJson(json);
 
   @override
-  final String? description;
-  @override
-  final String? from;
-  @override
   final String? id;
   @override
   final String? name;
+  @override
+  final String? description;
+  @override
+  final String? from;
   @override
   final String? to;
 
   @override
   String toString() {
-    return 'EducationModel(description: $description, from: $from, id: $id, name: $name, to: $to)';
+    return 'DescriptionModel(id: $id, name: $name, description: $description, from: $from, to: $to)';
   }
 
   @override
@@ -178,17 +178,17 @@ class _$EducationModelImpl implements _EducationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EducationModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.from, from) || other.from == from) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.to, to) || other.to == to));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, description, from, id, name, to);
+  int get hashCode => Object.hash(runtimeType, id, name, description, from, to);
 
   @JsonKey(ignore: true)
   @override
@@ -205,25 +205,25 @@ class _$EducationModelImpl implements _EducationModel {
   }
 }
 
-abstract class _EducationModel implements EducationModel {
+abstract class _EducationModel implements DescriptionModel {
   const factory _EducationModel(
-      {final String? description,
-      final String? from,
-      final String? id,
+      {final String? id,
       final String? name,
+      final String? description,
+      final String? from,
       final String? to}) = _$EducationModelImpl;
 
   factory _EducationModel.fromJson(Map<String, dynamic> json) =
       _$EducationModelImpl.fromJson;
 
   @override
-  String? get description;
-  @override
-  String? get from;
-  @override
   String? get id;
   @override
   String? get name;
+  @override
+  String? get description;
+  @override
+  String? get from;
   @override
   String? get to;
   @override

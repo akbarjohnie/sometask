@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+import 'package:first_task/feature/domain/entities/description_entity.dart';
+
 class SpecializationsEntity extends Equatable {
   final String? experienceFrom;
-  final SpecializationEntity? specialization;
+  final DescriptionEntity? specialization;
 
   const SpecializationsEntity({
     required this.experienceFrom,
@@ -13,30 +15,5 @@ class SpecializationsEntity extends Equatable {
   List<Object?> get props => [
         experienceFrom,
         specialization,
-      ];
-}
-
-class SpecializationEntity extends Equatable {
-  final String? createdAt;
-  final String? description;
-  final String? id;
-  final String? name;
-  final String? updatedAt;
-
-  const SpecializationEntity({
-    required this.createdAt,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.updatedAt,
-  });
-
-  @override
-  List<Object?> get props => [
-        createdAt,
-        description,
-        id,
-        name,
-        updatedAt,
       ];
 }

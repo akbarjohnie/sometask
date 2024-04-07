@@ -1,12 +1,12 @@
-import 'package:first_task/feature/data/models/education_model/education_model.dart';
-import 'package:first_task/feature/domain/entities/education_entity.dart';
+import 'package:first_task/feature/data/models/description_model/description_model.dart';
+import 'package:first_task/feature/domain/entities/description_entity.dart';
 
-EducationEntity educationToEntity(EducationModel model) {
-  return EducationEntity(
-    description: model.description,
-    from: model.from,
+DescriptionEntity educationOrWorkExpToEntity(DescriptionModel model) {
+  return DescriptionEntity(
     id: model.id,
     name: model.name,
+    description: model.description,
+    from: model.from,
     to: model.to,
   );
 }

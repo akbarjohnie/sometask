@@ -20,7 +20,7 @@ ResultModel _$ResultModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResultModel {
-  List<EducationModel?>? get educations => throw _privateConstructorUsedError;
+  List<DescriptionModel?>? get educations => throw _privateConstructorUsedError;
   String? get first_name => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get image_url => throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$ResultModel {
   String? get middle_name => throw _privateConstructorUsedError;
   List<Specializations?>? get specializations =>
       throw _privateConstructorUsedError;
-  List<WorkExperiancesModel?>? get work_experiences =>
+  List<DescriptionModel?>? get work_experiences =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,14 +44,14 @@ abstract class $ResultModelCopyWith<$Res> {
       _$ResultModelCopyWithImpl<$Res, ResultModel>;
   @useResult
   $Res call(
-      {List<EducationModel?>? educations,
+      {List<DescriptionModel?>? educations,
       String? first_name,
       String? id,
       String? image_url,
       String? last_name,
       String? middle_name,
       List<Specializations?>? specializations,
-      List<WorkExperiancesModel?>? work_experiences});
+      List<DescriptionModel?>? work_experiences});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
       educations: freezed == educations
           ? _value.educations
           : educations // ignore: cast_nullable_to_non_nullable
-              as List<EducationModel?>?,
+              as List<DescriptionModel?>?,
       first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
@@ -108,7 +108,7 @@ class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
       work_experiences: freezed == work_experiences
           ? _value.work_experiences
           : work_experiences // ignore: cast_nullable_to_non_nullable
-              as List<WorkExperiancesModel?>?,
+              as List<DescriptionModel?>?,
     ) as $Val);
   }
 }
@@ -122,14 +122,14 @@ abstract class _$$ResultModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<EducationModel?>? educations,
+      {List<DescriptionModel?>? educations,
       String? first_name,
       String? id,
       String? image_url,
       String? last_name,
       String? middle_name,
       List<Specializations?>? specializations,
-      List<WorkExperiancesModel?>? work_experiences});
+      List<DescriptionModel?>? work_experiences});
 }
 
 /// @nodoc
@@ -156,7 +156,7 @@ class __$$ResultModelImplCopyWithImpl<$Res>
       educations: freezed == educations
           ? _value._educations
           : educations // ignore: cast_nullable_to_non_nullable
-              as List<EducationModel?>?,
+              as List<DescriptionModel?>?,
       first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
@@ -184,7 +184,7 @@ class __$$ResultModelImplCopyWithImpl<$Res>
       work_experiences: freezed == work_experiences
           ? _value._work_experiences
           : work_experiences // ignore: cast_nullable_to_non_nullable
-              as List<WorkExperiancesModel?>?,
+              as List<DescriptionModel?>?,
     ));
   }
 }
@@ -193,14 +193,14 @@ class __$$ResultModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ResultModelImpl implements _ResultModel {
   const _$ResultModelImpl(
-      {final List<EducationModel?>? educations,
+      {final List<DescriptionModel?>? educations,
       this.first_name,
       this.id,
       this.image_url,
       this.last_name,
       this.middle_name,
       final List<Specializations?>? specializations,
-      final List<WorkExperiancesModel?>? work_experiences})
+      final List<DescriptionModel?>? work_experiences})
       : _educations = educations,
         _specializations = specializations,
         _work_experiences = work_experiences;
@@ -208,9 +208,9 @@ class _$ResultModelImpl implements _ResultModel {
   factory _$ResultModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResultModelImplFromJson(json);
 
-  final List<EducationModel?>? _educations;
+  final List<DescriptionModel?>? _educations;
   @override
-  List<EducationModel?>? get educations {
+  List<DescriptionModel?>? get educations {
     final value = _educations;
     if (value == null) return null;
     if (_educations is EqualUnmodifiableListView) return _educations;
@@ -238,9 +238,9 @@ class _$ResultModelImpl implements _ResultModel {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<WorkExperiancesModel?>? _work_experiences;
+  final List<DescriptionModel?>? _work_experiences;
   @override
-  List<WorkExperiancesModel?>? get work_experiences {
+  List<DescriptionModel?>? get work_experiences {
     final value = _work_experiences;
     if (value == null) return null;
     if (_work_experiences is EqualUnmodifiableListView)
@@ -305,20 +305,20 @@ class _$ResultModelImpl implements _ResultModel {
 
 abstract class _ResultModel implements ResultModel {
   const factory _ResultModel(
-      {final List<EducationModel?>? educations,
+      {final List<DescriptionModel?>? educations,
       final String? first_name,
       final String? id,
       final String? image_url,
       final String? last_name,
       final String? middle_name,
       final List<Specializations?>? specializations,
-      final List<WorkExperiancesModel?>? work_experiences}) = _$ResultModelImpl;
+      final List<DescriptionModel?>? work_experiences}) = _$ResultModelImpl;
 
   factory _ResultModel.fromJson(Map<String, dynamic> json) =
       _$ResultModelImpl.fromJson;
 
   @override
-  List<EducationModel?>? get educations;
+  List<DescriptionModel?>? get educations;
   @override
   String? get first_name;
   @override
@@ -332,7 +332,7 @@ abstract class _ResultModel implements ResultModel {
   @override
   List<Specializations?>? get specializations;
   @override
-  List<WorkExperiancesModel?>? get work_experiences;
+  List<DescriptionModel?>? get work_experiences;
   @override
   @JsonKey(ignore: true)
   _$$ResultModelImplCopyWith<_$ResultModelImpl> get copyWith =>

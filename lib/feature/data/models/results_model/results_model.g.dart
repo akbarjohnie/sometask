@@ -11,7 +11,7 @@ _$ResultModelImpl _$$ResultModelImplFromJson(Map<String, dynamic> json) =>
       educations: (json['educations'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : EducationModel.fromJson(e as Map<String, dynamic>))
+              : DescriptionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       first_name: json['first_name'] as String?,
       id: json['id'] as String?,
@@ -26,7 +26,7 @@ _$ResultModelImpl _$$ResultModelImplFromJson(Map<String, dynamic> json) =>
       work_experiences: (json['work_experiences'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : WorkExperiancesModel.fromJson(e as Map<String, dynamic>))
+              : DescriptionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

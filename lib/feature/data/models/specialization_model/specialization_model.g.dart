@@ -12,7 +12,7 @@ _$SpecializationsImpl _$$SpecializationsImplFromJson(
       experience_from: json['experience_from'] as String?,
       specialization: json['specialization'] == null
           ? null
-          : SpecializationModel.fromJson(
+          : DescriptionModel.fromJson(
               json['specialization'] as Map<String, dynamic>),
     );
 
@@ -21,24 +21,4 @@ Map<String, dynamic> _$$SpecializationsImplToJson(
     <String, dynamic>{
       'experience_from': instance.experience_from,
       'specialization': instance.specialization,
-    };
-
-_$SpecializationModelImpl _$$SpecializationModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SpecializationModelImpl(
-      created_at: json['created_at'] as String?,
-      description: json['description'] as String?,
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      updated_at: json['updated_at'] as String?,
-    );
-
-Map<String, dynamic> _$$SpecializationModelImplToJson(
-        _$SpecializationModelImpl instance) =>
-    <String, dynamic>{
-      'created_at': instance.created_at,
-      'description': instance.description,
-      'id': instance.id,
-      'name': instance.name,
-      'updated_at': instance.updated_at,
     };

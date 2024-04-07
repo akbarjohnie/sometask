@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
-class EducationEntity extends Equatable {
-  final String? description;
-  final String? from;
+class DescriptionEntity extends Equatable {
   final String? id;
   final String? name;
+  final String? description;
+  final String? from;
   final String? to;
 
-  const EducationEntity({
-    required this.description,
-    required this.from,
+  const DescriptionEntity({
     required this.id,
     required this.name,
+    required this.description,
+    required this.from,
     required this.to,
   });
 

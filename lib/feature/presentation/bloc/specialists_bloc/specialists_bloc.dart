@@ -1,14 +1,14 @@
 import 'dart:developer' show log;
 
 import 'package:equatable/equatable.dart';
-import 'package:first_task/core/error/failure_message.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:first_task/core/error/faliure.dart';
+import 'package:first_task/core/error/failure_message.dart';
+import 'package:first_task/feature/domain/entities/results_enity.dart';
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 import 'package:first_task/feature/domain/usecases/get_all_specialists.dart';
-import 'package:first_task/core/error/faliure.dart';
 import 'package:first_task/feature/data/repositories/mapper/results_entity_mapper.dart';
-import 'package:first_task/feature/domain/entities/results_enity.dart';
 
 part 'specialists_event.dart';
 part 'specialists_state.dart';
@@ -44,7 +44,7 @@ class SpecialistsBloc extends Bloc<SpecialistsEvent, SpecialistsState> {
       isFirstFetch: isFirstFetch,
     ));
 
-    log('oldResult \n$oldResult');
+    log('oldResult is empty?-${oldResult.isNotEmpty}');
 
     isFirstFetch = false;
 
