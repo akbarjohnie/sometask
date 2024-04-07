@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:first_task/di/service_locator.dart';
-import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_list_cubit.dart';
 import 'package:first_task/feature/presentation/pages/specialists_page/specialists_page.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:first_task/common/app_colors.dart';
+import 'package:first_task/feature/presentation/bloc/specialists_bloc/specialists_bloc.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<SpecialistsListCubit>(
-          create: (context) => sl<SpecialistsListCubit>()..loadSpecialists(),
+        BlocProvider<SpecialistsBloc>(
+          create: (context) => sl<SpecialistsBloc>(),
         ),
       ],
       child: MaterialApp(

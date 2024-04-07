@@ -1,5 +1,6 @@
-import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_list_cubit.dart';
 import 'package:flutter/material.dart';
+
+import 'package:first_task/feature/presentation/bloc/specialists_bloc/specialists_bloc.dart';
 
 abstract interface class ISpecialistsPresenter {
   void init();
@@ -7,10 +8,10 @@ abstract interface class ISpecialistsPresenter {
 }
 
 class SpecialistsPresenterImpl implements ISpecialistsPresenter {
-  final SpecialistsListCubit cubit;
+  final SpecialistsBloc bloc;
   late final ScrollController scrollController;
 
-  SpecialistsPresenterImpl({required this.cubit});
+  SpecialistsPresenterImpl({required this.bloc});
 
   @override
   void init() {
@@ -27,7 +28,7 @@ class SpecialistsPresenterImpl implements ISpecialistsPresenter {
     if (scrollController.position.pixels ==
             scrollController.position.maxScrollExtent &&
         scrollController.position.atEdge) {
-      cubit.loadSpecialists();
+      bloc.loadSpecialistsEvent();
     }
   }
 }
