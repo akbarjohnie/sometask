@@ -1,15 +1,14 @@
-import 'package:first_task/feature/data/repositories/mapper/results_entity_mapper.dart';
-import 'package:first_task/feature/domain/entities/results_enity.dart';
-import 'package:flutter/foundation.dart' show debugPrint;
+import 'dart:developer' show log;
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:first_task/core/error/failure_message.dart';
+import 'package:first_task/feature/data/repositories/mapper/results_entity_mapper.dart';
+import 'package:first_task/feature/domain/entities/results_enity.dart';
 import 'package:first_task/feature/domain/entities/specialists_entity.dart';
 import 'package:first_task/feature/domain/usecases/get_all_specialists.dart';
 import 'package:first_task/core/error/faliure.dart';
 import 'package:first_task/feature/presentation/bloc/s_list_cubit/specialists_list_state.dart';
-
-const SERVER_FAILURE_MESSAGE = 'Server Failure';
-const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
 class SpecialistsListCubit extends Cubit<SpecialistsState> {
   final GetAllSpecialists getAllSpecialists;
@@ -33,7 +32,7 @@ class SpecialistsListCubit extends Cubit<SpecialistsState> {
     emit(SpecialistsLoading(oldResults, isFirstFetch: page == 1));
 
     final failureOrSpecialists = await getAllSpecialists(
-      PageSpecialistsParams(page: page),
+      SpecialistsParams(page: page),
     );
 
     failureOrSpecialists.fold(
@@ -43,20 +42,18 @@ class SpecialistsListCubit extends Cubit<SpecialistsState> {
         ),
       ),
       (specialist) {
-        debugPrint('Page $page');
+        log('Page $page');
         final resEntityList = (state as SpecialistsLoading).oldResultsList;
 
         if (specialist.first.results!.isNotEmpty) {
           resEntityList.addAll(_getResults(specialist, page));
-          debugPrint('List length: ${resEntityList.length.toString()}');
+          log('List length: ${resEntityList.length.toString()}');
           emit(SpecialistsLoaded(resEntityList));
           if (resEntityList != <ResultsEntity>[]) {
             page++;
           }
         }
-        // else {
         emit(SpecialistsLoading(oldResults));
-        // }
       },
     );
   }
@@ -64,9 +61,9 @@ class SpecialistsListCubit extends Cubit<SpecialistsState> {
   String _mapFailureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return SERVER_FAILURE_MESSAGE;
+        return FailureMassage.serverFailureMessage;
       case CacheFailure:
-        return CACHED_FAILURE_MESSAGE;
+        return FailureMassage.cachedFailureMessage;
       default:
         return 'Unexpected Error';
     }

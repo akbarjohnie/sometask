@@ -1,7 +1,9 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart' show debugPrint;
+import 'dart:developer' show log;
+
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:first_task/feature/data/datasources/local/local_data_source_keys.dart';
 import 'package:first_task/core/error/exceptions.dart';
 import 'package:first_task/feature/data/models/specialists_model/specialists_model.dart';
 
@@ -15,9 +17,6 @@ abstract interface class ISpecialistsLocalDataSource {
   Future<void> specialistsToCache(List<SpecialistsModel> specialists);
 }
 
-// ignore: constant_identifier_names
-const CACHED_SPECIALISTS_LIST = 'CACHED_SPECIALISTS_LIST';
-
 class SpecialistsLocalDataSourceImpl implements ISpecialistsLocalDataSource {
   final SharedPreferences sharedPreferences;
 
@@ -25,10 +24,10 @@ class SpecialistsLocalDataSourceImpl implements ISpecialistsLocalDataSource {
 
   @override
   Future<List<SpecialistsModel>> getLastSpecialistsModelFromCache() {
-    final jsonSpecialistsList =
-        sharedPreferences.getStringList(CACHED_SPECIALISTS_LIST);
+    final jsonSpecialistsList = sharedPreferences
+        .getStringList(LocalDataSourceKeys.cachedSpecialistsList);
     if (jsonSpecialistsList != null && jsonSpecialistsList.isNotEmpty) {
-      debugPrint('Get Specialists from Cache: ${jsonSpecialistsList.length}');
+      log('Get Specialists from Cache: ${jsonSpecialistsList.length}');
       return Future.value(jsonSpecialistsList
           .map((specialists) =>
               SpecialistsModel.fromJson(json.decode(specialists)))
@@ -45,11 +44,11 @@ class SpecialistsLocalDataSourceImpl implements ISpecialistsLocalDataSource {
         .toList();
 
     sharedPreferences.setStringList(
-      CACHED_SPECIALISTS_LIST,
+      LocalDataSourceKeys.cachedSpecialistsList,
       jsonSpecialistsList,
     );
 
-    debugPrint('SpecialistModel to write Cache: ${jsonSpecialistsList.length}');
+    log('SpecialistModel to write Cache: ${jsonSpecialistsList.length}');
     return Future.value(jsonSpecialistsList);
   }
 }
