@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:first_task/common/end_points.dart';
 
 import 'package:first_task/core/error/exceptions.dart';
 import 'package:first_task/feature/data/models/specialists_model/specialists_model.dart';
@@ -20,7 +20,7 @@ abstract interface class ISpecialistsRemoteDataSource {
 
 class SpecialistsRemoteDataSourceImpl implements ISpecialistsRemoteDataSource {
   final Dio dio;
-  final _baseUrl = dotenv.env['BASE_URL'];
+  final String _baseUrl = EndPoints.baseUrl;
 
   SpecialistsRemoteDataSourceImpl({required this.dio});
 
